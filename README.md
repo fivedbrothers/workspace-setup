@@ -1,2 +1,2 @@
 # workspace-setup
-Suggested freeskwela workspace
+Suggested development workspace
