@@ -24,15 +24,10 @@ export STDCXX="-std=gnu++$STDCXX"
 export STACK_SIZE="-DSC_OVERRIDE_DEFAULT_STACK_SIZE=0x80000"
 
 export SYSTEMC_VERSION=2.3.4_pub_rev_20190614
-export CCI_VERSION
-export SCC_VERSION
-
 export SYSTEMC_HOME=$SYSTEMC/core-$SYSTEMC_VERSION
-export CCI_HOME=$SYSTEMC/cci-$CCI_VERSION
-export SCC_HOME=$SYSTEMC/scc-$SCC_VERSION
-
 export SYSTEMC_GIT=https://github.com/accellera-official/systemc.git
-export CCI_GIT
+
+export SCC_HOME=$SYSTEMC/scc-$SCC_VERSION
 export SCC_GIT=https://github.com/Minres/SystemC-Components.git
 
 cd $TMP
@@ -44,27 +39,28 @@ echo ""
 echo "Setup :: Source Folders"
 echo "************************************************************"
 export SYSTEMC_SOURCE=$TMP/systemc-$SYSTEMC_VERSION
-export CCI_SOURCE=$TMP/cci-$CCI_VERSION
 export SCC_SOURCE=$VPD/scc-$SCC_VERSION
 
 echo ""
-echo "Cloning :: SystemC $SYSTEMC_VERSION Release :: $SYSTEMC_GIT"
+echo "Cloning :: SystemC Core $SYSTEMC_VERSION Release :: $SYSTEMC_GIT"
 echo "************************************************************"
 git clone --depth 1 --branch $SYSTEMC_VERSION $SYSTEMC_GIT $SYSTEMC_SOURCE
 
 echo ""
-echo "Creating :: SystemC Install Folder :: $SYSTEMC_HOME"
+echo "Creating :: SystemC Core Install Folder :: $SYSTEMC_HOME"
 echo "************************************************************"
 mkdir -p $SYSTEMC_HOME
 
 echo ""
-echo "Entering :: SystemC Source Folder :: $SYSTEMC_SOURCE"
+echo "Build and Install SystemC Core Library"
+echo ""
+echo "Entering :: SystemC Core Source Folder :: $SYSTEMC_SOURCE"
 echo "************************************************************"
 cd $SYSTEMC_SOURCE
 autoreconf configure.ac
 
 echo ""
-echo "Configuring :: SystemC :: Release Build"
+echo "Configuring :: SystemC Core :: Release Build"
 echo "************************************************************"
 mkdir  build && cd build
 ../configure \
@@ -85,13 +81,9 @@ echo "Testing :: Release Build"
 echo "************************************************************"
 make check -j 8 VERBOSE=1
 echo ""
-echo "Installing :: SystemC"
+echo "Installing :: SystemC Core"
 echo "************************************************************"
 make install VERBOSE=0
-
-echo ""
-echo "Post Installation :: User Options"
-echo "************************************************************"
 
 echo ""
 echo "Cleaning :: Source Files"
