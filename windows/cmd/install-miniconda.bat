@@ -1,38 +1,42 @@
 @echo off
 
-:: project folder
-set BATCHDIR=%~dp0
-set PROJDIR=%BATCHDIR%..
+set CONDBATCH=%~dp0
 
-:: setup build directory
-set TMPDIR=%BATCHDIR%.tmp
+set CONDAVERSION=py39_4.10.3
+set CONDAINST=https://repo.anaconda.com/miniconda/Miniconda3-%CONDAVERSION%-Windows-x86_64.exe
+set CONDA=%DEVTOOLS%\miniconda
 
-if not exist %TMPDIR% (
-    echo.
-    echo Create temporary file directory
-    md %TMPDIR%
+set CREATEDIRS=%GITBATCH%create-workspace.bat
+
+if not exist %WSTMP% (
+    call %CREATEDIRS%
 )
 
+:: download miniconda version
 echo.
-echo Enter temporary file directory
-cd /d %TMPDIR%
-
-:: download miniconda latest version
-echo.
-echo Download latest version of Miniconda for Windows 64-bit
-curl -# -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+echo Downloading Miniconda for Windows 64-bit ver. %CONDAVERSION%
+curl -# -L -o %WSTMP%\miniconda-%CONDAVERSION%.exe %CONDAINST%
 
 :: start the miniconda installation
 echo.
-if exist "Miniconda3-latest-Windows-x86_64.exe" (
-    echo Launch Miniconda installation
-    call Miniconda3-latest-Windows-x86_64.exe
-)
+echo Installing Miniconda @ %CONDA%
+start /W %WSTMP%\miniconda-%CONDAVERSION%.exe /InstallationType=JustMe /S /D=%CONDA%
+echo Installation finished
 
 echo.
-echo Enter project directory
-cd /d %PROJDIR%
+echo Verifying Miniconda installation
+call %CONDA%\condabin\conda activate base
+call python -V -V
+call %CONDA%\condabin\conda deactivate
 
-:end
+:: notes
 echo.
-pause
+echo ************************************************************
+echo *  NOTES :: Miniconda for Windows                          *
+echo ************************************************************
+echo Add %CONDA%\condabin into the User Path Environment Variable.
+echo Note: Restart terminal session to use new path.
+echo Note: Uninstall using the Windows 'Add/Remove Program'.
+echo.
+echo ************************************************************
+echo.

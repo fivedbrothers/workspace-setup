@@ -25,6 +25,7 @@ call %CMDIR%\install-msys.bat %ZIP%\7z.exe %CMDIR%\bash
 call %CMDIR%\install-systemc.bat %CMDIR%\bash
 
 :: miniconda
+call %CMDIR%\install-miniconda.bat
 
 
 @REM pause
