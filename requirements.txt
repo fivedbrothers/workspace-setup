@@ -3,3 +3,4 @@ conan
 pyside6
 numpy
 pandas
+west

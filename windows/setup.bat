@@ -12,20 +12,23 @@ call %CMDIR%\create-workspace.bat
 :: archiving tool
 call %CMDIR%\install-7zip.bat %UTDIR%
 
-:: git
-call %CMDIR%\install-git.bat %ZIP%\7z.exe
+@REM :: git
+@REM call %CMDIR%\install-git.bat %ZIP%\7z.exe
 
-:: vscode-portable
-call %CMDIR%\install-vscode.bat %ZIP%\7z.exe
+@REM :: vscode-portable
+@REM call %CMDIR%\install-vscode.bat %ZIP%\7z.exe
 
-:: msys2-mingw64
-call %CMDIR%\install-msys.bat %ZIP%\7z.exe %CMDIR%\bash
+@REM :: msys2-mingw64
+@REM call %CMDIR%\install-msys.bat %ZIP%\7z.exe %CMDIR%\bash
+
+:: renode-portable
+call %CMDIR%\install-renode.bat %ZIP%\7z.exe
 
 :: systemc
-call %CMDIR%\install-systemc.bat %CMDIR%\bash
+@REM call %CMDIR%\install-systemc.bat %CMDIR%\bash
 
-:: miniconda
-call %CMDIR%\install-miniconda.bat
+@REM :: miniconda
+@REM call %CMDIR%\install-miniconda.bat
 
 
 @REM pause

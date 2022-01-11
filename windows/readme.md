@@ -36,6 +36,8 @@
 ### MSYS2 (MinGW64, Clang64)
 ### Visual Studio Code
 - Portable mode (unable to get updates automatically)
+### Renode
+- Portable mode
 ### SystemC
 - Built and installed using MSYS2-MinGW64
 ### Miniconda

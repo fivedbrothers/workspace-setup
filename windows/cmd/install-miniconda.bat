@@ -1,6 +1,6 @@
 @echo off
 
-set CONDBATCH=%~dp0
+set CONDABATCH=%~dp0
 
 set CONDAVERSION=py39_4.10.3
 set CONDAINST=https://repo.anaconda.com/miniconda/Miniconda3-%CONDAVERSION%-Windows-x86_64.exe
