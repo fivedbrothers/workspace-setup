@@ -12,23 +12,28 @@ call %CMDIR%\create-workspace.bat
 :: archiving tool
 call %CMDIR%\install-7zip.bat %UTDIR%
 
-@REM :: git
-@REM call %CMDIR%\install-git.bat %ZIP%\7z.exe
+:: git
+call %CMDIR%\install-git.bat %ZIP%\7z.exe
 
-@REM :: vscode-portable
-@REM call %CMDIR%\install-vscode.bat %ZIP%\7z.exe
+:: vscode-portable
+call %CMDIR%\install-vscode.bat %ZIP%\7z.exe
 
-@REM :: msys2-mingw64
-@REM call %CMDIR%\install-msys.bat %ZIP%\7z.exe %CMDIR%\bash
+:: msys2-mingw64
+call %CMDIR%\install-msys.bat %ZIP%\7z.exe %CMDIR%\bash
 
 :: renode-portable
 call %CMDIR%\install-renode.bat %ZIP%\7z.exe
 
 :: systemc
-@REM call %CMDIR%\install-systemc.bat %CMDIR%\bash
+call %CMDIR%\install-systemc.bat %CMDIR%\bash
 
-@REM :: miniconda
-@REM call %CMDIR%\install-miniconda.bat
+:: miniconda
+call %CMDIR%\install-miniconda.bat
 
-
+:: clear temporary files
+echo.
+set /p CLRTMP="Clear temporary folder (Y/N)?: "
+if %CLRTMP%=="Y" %CLRTMP%=="y" (
+    rd %WSTMP% /S
+)
 @REM pause
