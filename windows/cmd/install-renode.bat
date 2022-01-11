@@ -2,8 +2,8 @@
 
 set RENODEBATCH=%~dp0
 
-set RENODEVERSION=1.12.0
-set RENODEINST=https://github.com/renode/renode/releases/download/v%RENODEVERSION%/renode_%RENODEVERSION%.zip
+set RENODEVERSION=1.12.0+20220111git04c47ce0
+set RENODEINST=https://dl.antmicro.com/projects/renode/builds/renode_%RENODEVERSION%.zip
 set RENODE=%DEVTOOLS%\renode
 
 set CREATEDIRS=%RENODEBATCH%create-workspace.bat
@@ -31,7 +31,7 @@ if exist "%WSTMP%\renode_%RENODEVERSION%" (
 :: notes
 echo.
 echo ************************************************************
-echo *  NOTES :: Renode (Portable Mode)             *
+echo *  NOTES :: Renode Framework (Portable Mode)               *
 echo ************************************************************
 echo Add %RENODE%\bin into the User Path Environment Variable.
 echo Note: Restart terminal session to use new path.
